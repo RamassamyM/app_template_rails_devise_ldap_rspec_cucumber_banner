@@ -2,9 +2,7 @@
 
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
-Devise.setup do |config|  config.warden do |manager|
-    manager.default_strategies(:scope => :user).unshift :ldap_authenticatable
-  end
+Devise.setup do |config|
 
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
@@ -12,7 +10,7 @@ Devise.setup do |config|  config.warden do |manager|
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
   # config.secret_key = 'e7c32fff6f4507693944e8d82e4c302b687800c856b0de4ebb8b6a12dd050f9bf06d163009299fabf208bdcea76dc71a53fbd6a9a128a2f64bf35dbbe290b608'
-  
+
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'
@@ -43,7 +41,7 @@ Devise.setup do |config|  config.warden do |manager|
   # session. If you need permissions, you should implement that in a before filter.
   # You can also supply a hash where the value is a boolean determining whether
   # or not authentication should be aborted when the value is not present.
-  # config.authentication_keys = [:email]
+  config.authentication_keys = [:username]
 
   # Configure parameters from the request object used for authentication. Each entry
   # given should be a request method and it will automatically be passed to the
@@ -148,7 +146,7 @@ Devise.setup do |config|  config.warden do |manager|
   config.reconfirmable = true
 
   # Defines which key will be used when confirming an account
-  # config.confirmation_keys = [:email]
+  config.confirmation_keys = [:username]
 
   # ==> Configuration for :rememberable
   # The time the user will be remembered without asking for credentials again.
@@ -166,7 +164,7 @@ Devise.setup do |config|  config.warden do |manager|
 
   # ==> Configuration for :validatable
   # Range for password length.
-  config.password_length = 6..128
+  config.password_length = 8..128
 
   # Email regex used to validate email formats. It simply asserts that
   # one (and only one) @ exists in the given string. This is mainly
@@ -207,7 +205,7 @@ Devise.setup do |config|  config.warden do |manager|
   # ==> Configuration for :recoverable
   #
   # Defines which key will be used when recovering the password for an account
-  # config.reset_password_keys = [:email]
+  config.reset_password_keys = [:username]
 
   # Time interval you can reset your password with a reset password key.
   # Don't put a too small interval or your users won't have the time to
@@ -265,10 +263,10 @@ Devise.setup do |config|  config.warden do |manager|
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.
   #
-  # config.warden do |manager|
-  #   manager.intercept_401 = false
-  #   manager.default_strategies(scope: :user).unshift :some_external_strategy
-  # end
+  config.warden do |manager|
+    manager.intercept_401 = false
+    manager.default_strategies(scope: :user).unshift :ldap_authenticatable
+  end
 
   # ==> Mountable engine configurations
   # When using Devise inside an engine, let's call it `MyEngine`, and this engine
