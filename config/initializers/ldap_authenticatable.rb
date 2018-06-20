@@ -9,10 +9,11 @@ module Devise
           ldap = Net::LDAP.new
           ldap.host = '192.168.0.202'
           ldap.port = 389
-          ldap.auth email, password
+          username_ldap = "uid=" + username + ",ou=People,dc=poietis,dc=com"
+          ldap.auth username_ldap, password
 
           if ldap.bind
-            user = User.find_or_create_by(email: email)
+            user = User.find_or_create_by(username: username)
             success!(user)
           else
             return fail(:invalid_login)
@@ -20,8 +21,8 @@ module Devise
         end
       end
 
-      def email
-        params[:user][:email]
+      def username
+        params[:user][:username]
       end
 
       def password
