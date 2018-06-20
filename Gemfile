@@ -9,6 +9,7 @@ gem 'pg', '~> 0.21'
 gem 'puma'
 gem 'rails', '5.2.0'
 gem 'redis'
+gem 'net-ldap'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap', '~> 4.1', '>= 4.1.1'
