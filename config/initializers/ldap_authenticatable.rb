@@ -7,10 +7,10 @@ module Devise
       def authenticate!
         if params[:user]
           ldap = Net::LDAP.new
-          ldap.host = [YOUR LDAP HOSTNAME]
-          ldap.port = [YOUR LDAP HOSTNAME PORT]
+          ldap.host = '192.168.0.202'
+          ldap.port = 389
           ldap.auth email, password
-        
+
           if ldap.bind
             user = User.find_or_create_by(email: email)
             success!(user)
@@ -19,7 +19,7 @@ module Devise
           end
         end
       end
-      
+
       def email
         params[:user][:email]
       end
