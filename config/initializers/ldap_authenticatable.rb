@@ -24,13 +24,13 @@ module Devise
         {
           host: 'skincorp01.poietis.com',
           port: 389,
-          # encryption: {
-          #   method: :start_tls
-          # },
+          encryption: {
+            method: :start_tls
+          },
           auth: {
             username: username_ldap,
             password: password,
-            method: :start_tls
+            method: :simple
           }
         }
       end
