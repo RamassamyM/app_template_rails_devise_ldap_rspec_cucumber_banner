@@ -6,11 +6,7 @@ module Devise
     class LdapAuthenticatable < Authenticatable
       def authenticate!
         if params[:user]
-          ldap = Net::LDAP.new
-          ldap.host = '192.168.0.202'
-          ldap.port = 389
-          ldap.auth username_ldap, password
-
+          ldap = Net::LDAP.new(ldap_args)
           if ldap.bind
             user = User.find_or_create_by(username: username)
             success!(user)
@@ -22,6 +18,20 @@ module Devise
 
       def username_ldap
         "uid=" + username + ",ou=People,dc=poietis,dc=com"
+      end
+
+      def ldap_args
+        {
+          host: '192.168.0.202',
+          port: 389,
+          encryption: {
+            method: :start_tls
+          }
+          auth: {
+            username: username_ldap,
+            password: password,
+          }
+        }
       end
 
       def username
