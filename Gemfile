@@ -13,7 +13,7 @@ gem 'net-ldap'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap', '~> 4.1', '>= 4.1.1'
-gem 'font-awesome-sass', '~> 5.0.9'
+gem 'font-awesome-sass', '~> 5.0.13'
 gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'

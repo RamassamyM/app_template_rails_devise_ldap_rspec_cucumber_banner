@@ -12,6 +12,7 @@ public/packs-test
 node_modules
 yarn-error.log
 .byebug_history
+puma_ssl_files
 
 # Ignore application configuration
 /config/application.yml
