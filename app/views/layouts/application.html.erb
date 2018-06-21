@@ -12,6 +12,9 @@
   </head>
   <body>
     <%= render 'shared/navbar' %>
+    <% unless is_home %>
+      <div class="under-navbar"></div>
+    <% end %>
     <%= render 'shared/flashes' %>
     <%= yield %>
     <%= javascript_include_tag 'application' %>
