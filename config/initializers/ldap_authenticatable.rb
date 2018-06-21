@@ -22,14 +22,15 @@ module Devise
 
       def ldap_args
         {
-          host: '192.168.0.202',
+          host: 'skincorp01.poietis.com',
           port: 389,
-          encryption: {
-            method: :start_tls
-          }
+          # encryption: {
+          #   method: :start_tls
+          # },
           auth: {
             username: username_ldap,
             password: password,
+            method: :start_tls
           }
         }
       end
