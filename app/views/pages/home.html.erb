@@ -1,2 +1,8 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="banner">
+  <div class="banner-content">
+    <h1>Poietis DataHub</h1>
+    <p><span id="banner-typed-text"></span></p>
+    <button id="sweet-alert" data-swalcontent='{"title": "Start soon", "text": "The service will be available very soon, stay in touch !", "icon": "info"}' class="btn btn-primary btn-lg"><%= t(".start", default: "Start now") %></button>
+  </div>
+</div>
+<%= render 'shared/footer' %>

@@ -1,0 +1,9 @@
+.pointered {
+  cursor: pointer;
+}
+
+.lighter-on-hover {
+  &:hover {
+    opacity: 0.6;
+  }
+}
