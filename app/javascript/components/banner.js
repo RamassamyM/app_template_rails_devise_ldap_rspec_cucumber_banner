@@ -2,7 +2,7 @@
 import Typed from 'typed.js';
 function loadDynamicBannerText () {
   new Typed('#banner-typed-text', {
-    strings: ["Data intelligence platform", "Learn from your experiments"],
+    strings: ["We can help you", "Change your life"],
     typeSpeed: 50,
     loop: true
   });
